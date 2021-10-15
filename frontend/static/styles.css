@@ -33,6 +33,11 @@ button {
   cursor: pointer;
 }
 
-h1 {
+h2.header {
   text-align: center;
 }
+
+.wrapper {
+  text-align: center
+}
+
