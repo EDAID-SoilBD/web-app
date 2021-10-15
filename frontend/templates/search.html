@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <title>SoilDB - Search</title>
+  </head>
+  <body>
+    <h2 class="header">Search by code</h2>
+    <form action="http://localhost:4000/search-data" , method="get">
+      <div class="wrapper">
+        <div class="formbuilder-text form-group field-text-1634299554090">
+          <label for="text-1634299554090" class="formbuilder-text-label"
+            >Item code<span class="formbuilder-required">*</span></label
+          >
+          <input
+            type="text"
+            placeholder="Code"
+            class="form-control"
+            name="CODE"
+            access="false"
+            id="CODE"
+            required="required"
+            aria-required="true"
+          />
+        </div>
+        <div class="formbuilder-button form-group field-button-1634299604864">
+          <button type="submit">Search</button>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>

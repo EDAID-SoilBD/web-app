@@ -13,15 +13,14 @@ app = Flask(__name__)
 
 @app.route("/api/data", methods=["GET"])
 def list_soil_data():
-    soil_data = list(db_col.find())
+    query = dict(request.args)
+    for k, v in query.items():
+        if v.isnumeric():
+            v = float(v)
+        query.update({k.upper(): v})
+    print(query)
+    soil_data = list(db_col.find(query))
     response = json_util.dumps(soil_data, ensure_ascii=False).encode("utf8")
-    return Response(response)
-
-
-@app.route("/api/data/<code>", methods=["GET"])
-def get_soil_data_entry(code):
-    user = db_col.find_one({"CODE": code})
-    response = json_util.dumps(user, ensure_ascii=False).encode("utf8")
     return Response(response)
 
 

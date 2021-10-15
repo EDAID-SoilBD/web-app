@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from requests import get
 
 app = Flask(__name__)
@@ -17,10 +17,17 @@ def browse_data():
     return render_template("browse.html", records=r, colnames=r[0].keys())
 
 
-@app.route("/data/<code>")
-def search_data(code):
-    r = get(f"http://localhost:5000/api/data/{code}").json()
-    return render_template("browse.html", records=[r], colnames=r.keys())
+@app.route("/search-data", methods=["GET"])
+def search_data():
+    payload = dict(request.args)
+    r = get(f"http://localhost:5000/api/data", params=payload).json()
+    print(r)
+    return render_template("browse.html", records=r, colnames=r[0].keys())
+
+
+@app.route("/search")
+def search_page():
+    return render_template("search.html")
 
 
 if __name__ == "__main__":

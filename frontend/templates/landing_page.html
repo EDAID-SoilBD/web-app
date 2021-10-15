@@ -5,16 +5,16 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='styles.css') }}"
     />
-    <title>EDAID</title>
+    <title>SoilDB - Landing page</title>
   </head>
   <body>
-    <div>
-      <h2>Available actions</h2>
-      <a href="http://localhost:4000/browse"><button>Browse data</button></a>
-      <a href="http://localhost:4000/data/G0205"
-        ><button>Search data</button></a
-      >
-      <a href="/browse"><button>Insert data</button></a>
+    <div class="container">
+      <h2 class="header">Available actions</h2>
+      <div class="wrapper">
+        <a href="http://localhost:4000/browse"><button>Browse data</button></a>
+        <a href="http://localhost:4000/search"><button>Search data</button></a>
+        <a href="/browse"><button>Insert data</button></a>
+      </div>
     </div>
   </body>
 </html>
