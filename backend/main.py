@@ -11,21 +11,21 @@ db_col = pymongo.collection.Collection(database, "Data")
 app = Flask(__name__)
 
 
-@app.route("/data", methods=["GET"])
+@app.route("/api/data", methods=["GET"])
 def list_soil_data():
     soil_data = list(db_col.find())
     response = json_util.dumps(soil_data, ensure_ascii=False).encode("utf8")
     return Response(response)
 
 
-@app.route("/data/<code>", methods=["GET"])
+@app.route("/api/data/<code>", methods=["GET"])
 def get_soil_data_entry(code):
     user = db_col.find_one({"CODE": code})
     response = json_util.dumps(user, ensure_ascii=False).encode("utf8")
     return Response(response)
 
 
-@app.route("/data", methods=["POST"])
+@app.route("/api/data", methods=["POST"])
 def insert_soil_data():
     try:
         item = {

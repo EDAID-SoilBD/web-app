@@ -13,13 +13,13 @@ def landing_page():
 
 @app.route("/browse")
 def browse_data():
-    r = get("http://localhost:5000/data").json()
+    r = get("http://localhost:5000/api/data").json()
     return render_template("browse.html", records=r, colnames=r[0].keys())
 
 
 @app.route("/data/<code>")
 def search_data(code):
-    r = get(f"http://localhost:5000/data/{code}").json()
+    r = get(f"http://localhost:5000/api/data/{code}").json()
     return render_template("browse.html", records=[r], colnames=r.keys())
 
 
